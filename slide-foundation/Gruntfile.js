@@ -7,6 +7,22 @@ module.exports = function(grunt) {
 	grunt.initConfig({
 		pkg: grunt.file.readJSON('package.json'),
 
+		browserSync: {
+			dev: {
+					bsFiles: {
+							src : [
+									'css/*.css',
+									'../*.html'
+							]
+					},
+					options: {
+						server: {
+							baseDir: "../"
+					}
+				}
+			}	
+		},
+
 		sass: {
 			dist: {
 				files: {
@@ -31,14 +47,19 @@ module.exports = function(grunt) {
       dist: {
         src: 'css/*.css'
       }
-    },
+		},
+		
+
     
 	});
 
   grunt.loadNpmTasks( 'grunt-contrib-watch' );
   grunt.loadNpmTasks( 'grunt-postcss' );
 	grunt.loadNpmTasks( 'grunt-sass' );
+	grunt.loadNpmTasks( 'grunt-browser-sync' );
 	
-	grunt.registerTask( 'css', [ 'sass', 'postcss' ] );
+	grunt.registerTask( 'css', [ 'browserSync', 'sass', 'postcss'  ] );
 	grunt.registerTask( 'default', [ 'css' ] );
+
+	grunt.registerTask( 'start', [ 'browserSync', 'watch', 'sass', 'postcss' ] );
 };

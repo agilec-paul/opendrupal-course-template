@@ -17,14 +17,14 @@ $c-drupal-green-lime: #96BC44;
 $c-drupal-red: #EBCCCC;
 
 // Grayscale colours
-$c-off-black: #222222;
+$c-off-black: #333;
 
 .reveal {
   color: $c-off-black;
 
   h1 {
-    color: $c-drupal-blue-dark;
-    text-shadow: 1px 1px 0px lighten($c-drupal-blue-dark, 40%);
+    color: blue;
+    text-shadow: 1px 1px 1px lighten($c-drupal-blue-dark, 40%);
     font-size: 2em;
   }
 
